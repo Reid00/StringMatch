@@ -13,6 +13,7 @@ class KMP:
                 if s[i+cur] != p[i]:  
                     # print(s[i+cur], p[i], '不匹配。查表位置：', i, i - table[i-1])
                     cur += max(i - table[i-1], 1) # 有了部分匹配表,我们不只是单纯的1位1位往右移,可以一次移动多位  
+                    #移动位数 = 已匹配的字符数 - 对应的部分匹配值
                     break  
             else:
                 return cur 
@@ -39,4 +40,5 @@ class KMP:
 
 if __name__ == "__main__":
     kmp=KMP()
-    kmp.kmp_match('AB','ABCDABD')
+    cur=kmp.kmp_match('BBC ABCDAB ABCDABCDABDE','ABCDABD')
+    print(cur)
